@@ -5,7 +5,7 @@ export default class rotate{
 		this.ctx = ctx;				
 	}
 	speed(g){
-		this.speeds = this.speeds + g*9.8/1000;
+		this.speeds = this.speeds + g*9.8*0.001; //应取0.016
 		this.rotate()
 	}
 	rotate(){

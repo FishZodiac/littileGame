@@ -59,7 +59,7 @@ export default class main{
 		this.Ints = setInterval(()=>{
 			rotateBox.clearRect(-screenWidth/2,-screenHeight/2,canvas.width,canvas.height)						
 			that.Back.draw(this.starting)  //重绘背景
-			that.circle.draw(rotateBox,that.pageX)
+			that.circle.draw(rotateBox,that.pageX,that.Gravity.rotate.rotates)
 			that.wood.draw(rotateBox)			
 			that.timer.update()
 			that.Gravity.calculate(that.circle.circleCenter,this.Ints)

@@ -6,20 +6,37 @@ atlas.src = 'images/Monster.png'
 export default class circle{
 	constructor(ctx){
 		this.circleCenter =-10
+		/*速度*/
+		this.speed = 0
+		/*边界*/
 		this.borderL = -162
 		this.borderR = 142;
 
-		/*获取随机偏移量*/	
-		let rPosi = 30-Math.random()*60
-		this.draw(ctx,rPosi)
+		this.start(ctx)
 	}
 
-	draw(ctx,posi){
-		let that = this;	
-		if (this.circleCenter+posi>this.borderR||this.circleCenter+posi<this.borderL) {
+	start(ctx){
+		/*获取随机偏移量*/	
+		let rPosi = 30-Math.random()*60
+		this.draw(ctx,rPosi,0)
+	}
+
+	velocity(r){
+		let r0 = (r>0)?1:-1
+		let r1 = Math.abs(r);
+		let a = 9.8*Math.sin(r1/360)
+		this.speed = this.speed + r0*a*10 //物理加速理论*0.016，实际取*100	
+		console.log(this.speed)
+	}
+
+	draw(ctx,posi,rotates){
+		let that = this;
+		that.velocity(rotates)
+		let _posi = that.circleCenter+posi+that.speed*0.016
+		if (_posi>that.borderR||_posi<that.borderL) {
 			return;
 		}
-		this.circleCenter =this.circleCenter+posi;
+		this.circleCenter = _posi;
 		
 		ctx.drawImage(atlas, this.circleCenter, -30,25,20)
 

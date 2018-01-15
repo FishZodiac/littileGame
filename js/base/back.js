@@ -20,7 +20,7 @@ export default class bg{
 	ready(){
 		let that = this;
 		atlas.onload = function () {
-		    that.ctx.drawImage(atlas, screenWidth/2-100, screenHeight/2,200,45)
+		    that.ctx.drawImage(atlas, screenWidth/2-100, screenHeight/2,200,50)
 		}
 	    // this.ctx.fillStyle = "#82C1DD"
 	    // this.ctx.font = "40px Microsoft YaHei"
