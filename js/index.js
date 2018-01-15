@@ -55,9 +55,10 @@ export default class main{
 	/*游戏渲染*/
 	loop(){
 		let that = this;
+		
 		this.Ints = setInterval(()=>{
-			rotateBox.clearRect(-screenWidth/2,-screenHeight/2,canvas.width,canvas.height)			
-			that.Back.draw(this.starting)
+			rotateBox.clearRect(-screenWidth/2,-screenHeight/2,canvas.width,canvas.height)						
+			that.Back.draw(this.starting)  //重绘背景
 			that.circle.draw(rotateBox,that.pageX)
 			that.wood.draw(rotateBox)			
 			that.timer.update()
@@ -65,10 +66,11 @@ export default class main{
 			ctx.drawImage(offcanvas,0,0)	
 			/*判定结束*/
 			if (that.Gravity.rotate.rotates >= Math.PI/2 || that.Gravity.rotate.rotates <= -Math.PI/2) {
-				that.timer.over()
+				that.timer.over(that.Gravity.rotate.rotates)
 				that.starting = false
 				clearInterval(this.Ints)				
 			}
+			/*理论上快速刷新移动距离*/
 			that.pageX=0			
 		},16)
 	}

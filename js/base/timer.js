@@ -20,11 +20,14 @@ export default class timer{
   		//this.mainCtx.drawImage(this.canva,0,0)
 	}
 
-	over(){
-		this.rotateBox.rotate(Math.PI/2)
-		this.rotateBox.fillStyle = "#CEECEA"
-		this.rotateBox.fillRect(-screenWidth/2,-screenHeight/2,canvas.width,canvas.height)
+	over(rotates){
+		this.rotateBox.rotate(-rotates)
+		this.ctx.fillStyle = "#CEECEA"
+		this.ctx.fillRect(0,0,canvas.width,canvas.height)
 		this.ctx.fillStyle = "#82C1DD"		
-		this.ctx.fillText(Math.floor(this.score/1000), screenWidth/2-24, 100);
+		this.ctx.fillText(Math.floor(this.score/1000), screenWidth/2-24, canvas.height/2);
+		this.ctx.font = "16px Microsoft YaHei"
+		this.ctx.fillStyle = "#82C1DD"		
+		this.ctx.fillText("点击重新开始", screenWidth/2-50, canvas.height/2+50);
 	}
 }
