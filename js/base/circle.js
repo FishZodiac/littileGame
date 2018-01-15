@@ -5,11 +5,11 @@ export default class circle{
 	constructor(ctx){
 		this.circleCenter =-10
 		this.borderL = -160
-		this.borderR = 160;	
-		this.draw(ctx,0)
+		this.borderR = 140;	
+		this.draw(ctx,-30)
 	}
 
-	draw(ctx,posi){		
+	draw(ctx,posi){	
 		if (this.circleCenter+posi>this.borderR||this.circleCenter+posi<this.borderL) {
 			return;
 		}

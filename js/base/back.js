@@ -1,17 +1,37 @@
 let screenHeight = window.innerHeight
 let screenWidth  = window.innerWidth
+let atlas = new Image()
+atlas.src = 'images/btn_play.png'
+
 export default class bg{
 	constructor(ctx){
 		this.ctx = ctx
 		this.draw()
 	}
-	draw(){
+	draw(starting){
         this.ctx.fillStyle = "#CEECEA";
-		this.ctx.fillRect(-screenWidth, -screenHeight, screenWidth*2, screenHeight*2);
-		//this.triangle()
+		this.ctx.fillRect(0, 0, screenWidth, screenHeight);
+		if (!starting) {
+			this.ready()
+		}else{
+			this.triangle()
+		}
 	}
-	triangle(){		
-	    this.ctx.fillStyle = "#59A0A1"
-	    this.ctx.arc(0,0,4, 0,2*Math.PI,true)	
+	ready(){
+		// this.ctx.drawImage(
+	 //      atlas,
+	 //      100, screenHeight/2
+	 //    )
+	    this.ctx.fillStyle = "#82C1DD"
+	    this.ctx.font = "40px Microsoft YaHei"
+	    this.ctx.fillText("PLAY", screenWidth/2-48, screenHeight/2-20)
+	}
+	triangle(){	
+		this.ctx.fillStyle = "#82C1DD"
+	    this.ctx.beginPath();
+		this.ctx.moveTo(screenWidth/2,screenHeight/2);
+		this.ctx.lineTo(screenWidth/2+25,screenHeight/2+100);
+		this.ctx.lineTo(screenWidth/2-25,screenHeight/2+100);
+		this.ctx.fill();
 	}
 }
