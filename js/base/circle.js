@@ -23,15 +23,21 @@ export default class circle{
 
 	velocity(r){
 		let r0 = (r>0)?1:-1
-		let r1 = Math.abs(r);
-		let a = 9.8*Math.sin(r1/360)
-		this.speed = this.speed + r0*a*10 //物理加速理论*0.016，实际取*100	
-		console.log(this.speed)
+		let r1 = Math.abs(r) //去绝对值计算sin
+		let a = 9.8*Math.sin(r1)	
+
+		this.speed = this.speed + r0*a*0.032 //物理加速理论*0.016，实际取*0.03
 	}
 
 	draw(ctx,posi,rotates){
 		let that = this;
 		that.velocity(rotates)
+
+		//拖拽反作用力视为无限大，速度清0
+		if (posi != 0) {
+			that.speed = 0		
+		}
+		
 		let _posi = that.circleCenter+posi+that.speed*0.016
 		if (_posi>that.borderR||_posi<that.borderL) {
 			return;
@@ -42,7 +48,6 @@ export default class circle{
 
 		// ctx.fillStyle = "#82C1DD";
 		// ctx.fillRect(this.circleCenter, -30, 20, 20);
-		//ctx.arc(this.circleCenter, screenHeight/2-12, 12, 0,2*Math.PI,true);
-		return this.circleCenter;
+		//ctx.arc(this.circleCenter, screenHeight/2-12, 12, 0,2*Math.PI,true);		
 	}
 }

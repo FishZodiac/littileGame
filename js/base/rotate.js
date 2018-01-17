@@ -4,8 +4,8 @@ export default class rotate{
 		this.speeds = 0;
 		this.ctx = ctx;				
 	}
-	speed(g){
-		this.speeds = this.speeds + g*9.8*0.001; //应取0.016
+	speed(c){
+		this.speeds = this.speeds + 9.8*Math.cos(Math.abs(this.rotates))*0.001*(c/2); //除以16倍，
 		this.rotate()
 	}
 	rotate(){

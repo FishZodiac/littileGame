@@ -10,12 +10,8 @@ export default class gravity{
 	}
 
 	calculate(cen){
-		cen = (cen+10);
-		if (cen>0) {
-			cen=cen/160
-		}else{
-			cen=cen/160
-		}
+		cen = (cen+10);		
+		cen=cen/160	//计算理论曲率半径
 		this.rotate.speed(cen)
 	}
 }
